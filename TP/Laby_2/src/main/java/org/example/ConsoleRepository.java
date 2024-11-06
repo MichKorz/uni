@@ -1,9 +1,21 @@
+/**
+ * The ConsoleRepository class implements the `Repository` interface, storing data about books, copies, and readers.
+ * It manages all the library’s in-memory data storage and retrieval.
+ *
+ * - **Information Expert**: As it contains information on books, copies, and readers, it is best suited to manage data operations for these entities.
+ * - **Low Coupling**: This class interacts with `Book`, `Copy`, and `Reader` objects without depending on the UI or business logic, promoting separation of concerns.
+ * - **High Cohesion**: Focuses solely on managing data, making it cohesive and easy to modify independently of business logic.
+ */
+
 package org.example;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
 
+/**
+ * The type Console repository.
+ */
 public class ConsoleRepository implements Repository
 {
     final private HashMap<String, Book> bookList;
@@ -12,6 +24,9 @@ public class ConsoleRepository implements Repository
 
     private int bookCount;
 
+    /**
+     * Instantiates a new Console repository.
+     */
     public ConsoleRepository()
     {
         bookList = new HashMap<>();

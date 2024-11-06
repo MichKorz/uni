@@ -1,13 +1,28 @@
+/**
+ * The UI class is responsible for handling user input and output, directing commands to the `Manager` class.
+ *
+ * - **Controller**: This class receives input from the user and translates it into actions, but it delegates actual business logic to the `Manager`.
+ * - **Low Coupling**: This class relies only on the `Manager` class for processing commands, maintaining a simple interaction model with other components.
+ */
+
 package org.example;
 
 import java.util.Scanner;
 
 
+/**
+ * The type Ui.
+ */
 public class UI
 {
     private static Manager Manager;
 
-    public static void main(final String[] args) 
+    /**
+     * Main.
+     *
+     * @param args the args
+     */
+    public static void main(final String[] args)
     {
 
         Manager = new Manager();
