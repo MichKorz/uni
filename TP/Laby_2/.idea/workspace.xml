@@ -5,15 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaae7989-773f-4b2a-a881-d2c6ab61d9c4" name="Changes" comment="Bare-bones app">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/ManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MPiS/Homework_1/fun.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MPiS/Homework_1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../MPiS/Homework_1/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MPiS/Homework_1/polynomial_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../MPiS/Homework_1/polynomial_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MPiS/Homework_1/polynomial_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../MPiS/Homework_1/polynomial_50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MPiS/Homework_1/sin_x_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../MPiS/Homework_1/sin_x_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MPiS/Homework_1/sin_x_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../MPiS/Homework_1/sin_x_50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MPiS/Homework_1/third_root_of_x_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../MPiS/Homework_1/third_root_of_x_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MPiS/Homework_1/third_root_of_x_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../MPiS/Homework_1/third_root_of_x_50.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ConsoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ConsoleRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Copy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Copy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Reader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Repository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Book.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/ConsoleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/ConsoleRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Copy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Copy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Manager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Reader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Reader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/UI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/UI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +38,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -40,7 +54,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/MichKorz/uni.git&quot;,
-    &quot;accountId&quot;: &quot;7cc8e78f-dce2-456e-974b-f742f2fece6f&quot;
+    &quot;accountId&quot;: &quot;76b7be3c-6c0a-4e86-982d-952c1cc1d7ff&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -59,11 +73,14 @@
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.UI.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ManagerTest.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/uni/TP/Laby_2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Michał&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -74,6 +91,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.example.UI" />
@@ -104,10 +129,10 @@
       <workItem from="1730891816454" duration="1313000" />
       <workItem from="1730893367298" duration="772000" />
       <workItem from="1730897475032" duration="329000" />
-      <workItem from="1730917095580" duration="83000" />
-      <workItem from="1730917336497" duration="1429000" />
-      <workItem from="1730919076668" duration="1219000" />
-      <workItem from="1730920425200" duration="170000" />
+      <workItem from="1730924341050" duration="1464000" />
+      <workItem from="1730961557231" duration="909000" />
+      <workItem from="1730964839760" duration="1304000" />
+      <workItem from="1730966201164" duration="92000" />
     </task>
     <task id="LOCAL-00001" summary="Bare-bones app">
       <option name="closed" value="true" />

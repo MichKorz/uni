@@ -2,8 +2,10 @@
  * The Reader class is responsible for representing a reader in the library system.
  * It encapsulates the ID and manages the books that are lent to the reader.
  *
- * - **Information Expert**: The class is responsible for handling information about the reader's lent books, so it knows which books have been borrowed.
- * - **Low Coupling**: The class only interacts with `Copy` objects and manages a collection of them without requiring information about the entire library.
+ * - **Information Expert**: The class is responsible for handling information about the reader's lent books,
+ * so it knows which books have been borrowed.
+ * - **Low Coupling**: The class only interacts with `Copy` objects and manages a collection of
+ * them without requiring information about the entire library.
  */
 
 package org.example;

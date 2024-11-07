@@ -1,9 +1,13 @@
 /**
- * The Manager class orchestrates actions between the UI and the `Repository`. It serves as a central point for executing library operations.
+ * The Manager class orchestrates actions between the UI and the `Repository`.
+ * It serves as a central point for executing library operations.
  *
- * - **Controller**: Acts as an intermediary between the UI and the data handling layer (`Repository`), coordinating actions and ensuring operations are performed correctly.
- * - **High Cohesion**: Contains operations related to library management (e.g., lending books), making it focused on a single purpose.
- * - **Low Coupling**: Delegates data-related tasks to the `Repository`, minimizing dependencies on specific data structures and promoting flexibility.
+ * - **Controller**: Acts as an intermediary between the UI and the data handling layer (`Repository`),
+ * coordinating actions and ensuring operations are performed correctly.
+ * - **High Cohesion**: Contains operations related to library management (e.g., lending books),
+ * making it focused on a single purpose.
+ * - **Low Coupling**: Delegates data-related tasks to the `Repository`,
+ * minimizing dependencies on specific data structures and promoting flexibility.
  */
 
 package org.example;

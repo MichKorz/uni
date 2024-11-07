@@ -1,8 +1,11 @@
 /**
- * The UI class is responsible for handling user input and output, directing commands to the `Manager` class.
+ * The UI class is responsible for handling user input and output,
+ * directing commands to the `Manager` class.
  *
- * - **Controller**: This class receives input from the user and translates it into actions, but it delegates actual business logic to the `Manager`.
- * - **Low Coupling**: This class relies only on the `Manager` class for processing commands, maintaining a simple interaction model with other components.
+ * - **Controller**: This class receives input from the user and translates it into actions,
+ * but it delegates actual business logic to the `Manager`.
+ * - **Low Coupling**: This class relies only on the `Manager` class for processing commands,
+ * maintaining a simple interaction model with other components.
  */
 
 package org.example;
@@ -80,12 +83,12 @@ public class UI
 
             default:
                 System.out.println("Command not found, "
-                        + "Try: addBook <title>, " +
-                        "addCopies <title> <count>, " +
-                        "addReader <id>, " +
-                        "lendBook <readerID> <title>, " +
-                        "displayBooks, " +
-                        "displayReaders");
+                        + "Try: addBook <title>, "
+                        + "addCopies <title> <count>, "
+                        + "addReader <id>, "
+                        + "lendBook <readerID> <title>, "
+                        + "displayBooks, "
+                        + "displayReaders");
                 break;
         }
         System.out.print(">");
