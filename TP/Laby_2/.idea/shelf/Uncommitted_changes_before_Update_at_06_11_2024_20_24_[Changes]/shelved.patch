@@ -1,0 +1,185 @@
+Index: ../../MPiS/Homework_1/fun.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../../MPiS/Homework_1/fun.py b/../../MPiS/Homework_1/fun.py
+deleted file mode 100644
+--- a/../../MPiS/Homework_1/fun.py	(revision b3fd0704e62778892046d7070b1b7483419e407a)
++++ /dev/null	(revision b3fd0704e62778892046d7070b1b7483419e407a)
+@@ -1,10 +0,0 @@
+-import math
+-
+-def third_root_of_x(x):
+-    return x ** (1/3)
+-
+-def sin_x(x):
+-    return math.sin(x)
+-
+-def polynomial(x):
+-    return 4*x*((1-x)**3)
+\ No newline at end of file
+Index: ../../MPiS/Homework_1/main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from fun import *\r\nimport random\r\nimport matplotlib.pyplot as plt\r\n\r\n\r\nfuns = [third_root_of_x, sin_x, polynomial]\r\n\r\nranges_x = [(0, 8), (0, math.pi), (0, 1)] \r\nranges_y = [(0, 2), (0, 1), (0, 27/64)]\r\n\r\nbatch_counts = [5, 50]\r\nsample_counts = list(range(50, 5001, 50))\r\n\r\ncorrect_values = [12, 2, 0.2]\r\n\r\nex_y = list(list(range(20)) for _ in range(50, 5001, 50))\r\n\r\nfor task in range(3):\r\n    x_min = ranges_x[task][0]\r\n    x_max = ranges_x[task][1]\r\n\r\n    y_min = ranges_y[task][0]\r\n    y_max = ranges_y[task][1]\r\n\r\n    for batch_count in batch_counts:\r\n        plt.title(funs[task].__name__)\r\n        plt.axhline(correct_values[task], color = \"green\")\r\n\r\n        for sample_count in sample_counts:\r\n            approx_sum = 0\r\n            for batch in range(batch_count):\r\n                points_under = 0\r\n                area = (x_max - x_min) * (y_max - y_min)\r\n                for sample in range(sample_count):\r\n                    x = random.uniform(x_min, x_max)\r\n                    y = random.uniform(y_min, y_max)\r\n                    if y <= funs[task](x):\r\n                        points_under += 1\r\n                approx_value = points_under/sample_count * area\r\n                approx_sum += approx_value\r\n                plt.scatter(sample_count, approx_value, s = 5, alpha = .3, color = \"blue\")\r\n            approx_average = approx_sum/batch_count\r\n            plt.scatter(sample_count, approx_average, s = 5, color = \"red\")\r\n\r\n        name = ''.join([funs[task].__name__, '_', str(batch_count), '.png'])\r\n        plt.savefig(name, dpi=500)\r\n        plt.clf()\r\n    \r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../../MPiS/Homework_1/main.py b/../../MPiS/Homework_1/main.py
+--- a/../../MPiS/Homework_1/main.py	(revision b3fd0704e62778892046d7070b1b7483419e407a)
++++ b/../../MPiS/Homework_1/main.py	(date 1730912091580)
+@@ -1,49 +1,64 @@
+-from fun import *
+-import random
+-import matplotlib.pyplot as plt
++from funs import * 
++import random 
++import matplotlib.pyplot as plt  
+ 
++# Lista funkcji do analizy
++funs = [third_root_of_x, sin_x, polynomial, pi]
+ 
+-funs = [third_root_of_x, sin_x, polynomial]
++# Przedziały dla wartości x, y dla poszczególnych funkcji
++ranges_x = [(0, 8), (0, math.pi), (0, 1),     (0, 2)] 
++ranges_y = [(0, 2), (0, 1),       (0, 27/64), (0, 2)]
+ 
+-ranges_x = [(0, 8), (0, math.pi), (0, 1)] 
+-ranges_y = [(0, 2), (0, 1), (0, 27/64)]
+-
++# Ilość powtórzeń w każdej serii (k)
+ batch_counts = [5, 50]
++
++# Liczba próbek (n) (od 50 do 5000 z krokiem 50)
+ sample_counts = list(range(50, 5001, 50))
+ 
+-correct_values = [12, 2, 0.2]
++# Poprawne wartości wyników dla poszczególnych funkcji
++correct_values = [12, 2, 0.2, math.pi]
+ 
+-ex_y = list(list(range(20)) for _ in range(50, 5001, 50))
+-
+-for task in range(3):
++# Główna pętla iterująca przez każdą z funkcji
++for task in range(4):
+     x_min = ranges_x[task][0]
+     x_max = ranges_x[task][1]
+-
+     y_min = ranges_y[task][0]
+     y_max = ranges_y[task][1]
+ 
++    # Iteracja przez ilość powtórzeń w serii
+     for batch_count in batch_counts:
+-        plt.title(funs[task].__name__)
+-        plt.axhline(correct_values[task], color = "green")
++        
++        # Tworzenie nazwy wykresu opartej na nazwie funkcji i liczbie powtórzeń w serii
++        name = ''.join([funs[task].__name__, '_', str(batch_count)])
++        plt.title(name)  # Ustawianie tytułu wykresu
++        plt.axhline(correct_values[task], color="green")  # Dodanie linii referencyjnej dla poprawnej wartości
+ 
++        # Iteracja przez różne liczby próbek w powtórzeniu
+         for sample_count in sample_counts:
+-            approx_sum = 0
++            approx_sum = 0  # Inicjalizacja zmiennej do sumowania przybliżonych wartości
++
++            # Iteracja przez serie (powtórzenia dla uśrednienia wyników)
+             for batch in range(batch_count):
+-                points_under = 0
+-                area = (x_max - x_min) * (y_max - y_min)
++                points_under = 0  # Licznik punktów poniżej wykresu funkcji
++                area = (x_max - x_min) * (y_max - y_min)  # Obliczenie powierzchni badanego obszaru
++
++                # Iteracja przez liczbę próbek w danej serii
+                 for sample in range(sample_count):
+-                    x = random.uniform(x_min, x_max)
+-                    y = random.uniform(y_min, y_max)
+-                    if y <= funs[task](x):
++                    x = random.uniform(x_min, x_max) 
++                    y = random.uniform(y_min, y_max) 
++                    if funs[task](x, y):  # Sprawdzanie, czy punkt jest poniżej wykresu funkcji
+                         points_under += 1
+-                approx_value = points_under/sample_count * area
+-                approx_sum += approx_value
+-                plt.scatter(sample_count, approx_value, s = 5, alpha = .3, color = "blue")
+-            approx_average = approx_sum/batch_count
+-            plt.scatter(sample_count, approx_average, s = 5, color = "red")
++
++                # Obliczenie przybliżonej wartości dla danej serii
++                approx_value = points_under / sample_count * area
++                approx_sum += approx_value 
++                plt.scatter(sample_count, approx_value, s=3, alpha=.3, color="blue")
++
++            # Obliczenie średniej przybliżonej wartości dla danej ilości próbek
++            approx_average = approx_sum / batch_count
++            plt.scatter(sample_count, approx_average, s=7, color="red")
+ 
+-        name = ''.join([funs[task].__name__, '_', str(batch_count), '.png'])
++        # Zapisanie wykresu do pliku
++        name = ''.join([name, '.png'])
+         plt.savefig(name, dpi=500)
+-        plt.clf()
+-    
+-
++        plt.clf()  # Czyszczenie wykresu przed kolejną iteracją
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"aaae7989-773f-4b2a-a881-d2c6ab61d9c4\" name=\"Changes\" comment=\"Bare-bones app\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/../..\" />\r\n  </component>\r\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"url\": \"https://github.com/MichKorz/uni.git\",\r\n    \"accountId\": \"76b7be3c-6c0a-4e86-982d-952c1cc1d7ff\"\r\n  }\r\n}]]></component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 5\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2oNwdRqqpRdsNI1V0NMx3v2ZHc2\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"Application.UI.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/Michał/uni/TP/Laby_2\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"onboarding.tips.debug.path\": \"C:/Users/Michał/IdeaProjects/Laby_2/src/main/java/org/example/Main.java\",\r\n    \"settings.editor.selected.configurable\": \"project.propVCSSupport.DirectoryMappings\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.UI\" />\r\n      <module name=\"Laby_2\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"aaae7989-773f-4b2a-a881-d2c6ab61d9c4\" name=\"Changes\" comment=\"\" />\r\n      <created>1730723430235</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1730723430235</updated>\r\n      <workItem from=\"1730723431229\" duration=\"4041000\" />\r\n      <workItem from=\"1730804593092\" duration=\"14422000\" />\r\n      <workItem from=\"1730891816454\" duration=\"1313000\" />\r\n      <workItem from=\"1730893367298\" duration=\"772000\" />\r\n      <workItem from=\"1730897475032\" duration=\"329000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Bare-bones app\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730892661336</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730892661336</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <ignored-roots>\r\n      <path value=\"$PROJECT_DIR$\" />\r\n    </ignored-roots>\r\n    <MESSAGE value=\"Bare-bones app\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Bare-bones app\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b3fd0704e62778892046d7070b1b7483419e407a)
++++ b/.idea/workspace.xml	(date 1730898839711)
+@@ -4,7 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="aaae7989-773f-4b2a-a881-d2c6ab61d9c4" name="Changes" comment="Bare-bones app" />
++    <list default="true" id="aaae7989-773f-4b2a-a881-d2c6ab61d9c4" name="Changes" comment="Bare-bones app">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -21,6 +23,12 @@
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+   </component>
++  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
++  "lastFilter": {
++    "state": "OPEN",
++    "assignee": "MichKorz"
++  }
++}]]></component>
+   <component name="GithubPullRequestsUISettings"><![CDATA[{
+   "selectedUrlAndAccountId": {
+     "url": "https://github.com/MichKorz/uni.git",
+@@ -87,7 +95,7 @@
+       <workItem from="1730804593092" duration="14422000" />
+       <workItem from="1730891816454" duration="1313000" />
+       <workItem from="1730893367298" duration="772000" />
+-      <workItem from="1730897475032" duration="329000" />
++      <workItem from="1730897475032" duration="1357000" />
+     </task>
+     <task id="LOCAL-00001" summary="Bare-bones app">
+       <option name="closed" value="true" />
+@@ -97,7 +105,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1730892661336</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Bare-bones app">
++      <option name="closed" value="true" />
++      <created>1730898168248</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1730898168248</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
