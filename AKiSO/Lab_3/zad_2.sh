@@ -55,6 +55,7 @@ get_cpu_usage()
 
         local usage=$(echo "scale=8; $delta / $total_delta * 100" | bc)
 
+        echo -e "${data[0]} usage:\t$usage%"
 
         index=$((index + 1))
     done
