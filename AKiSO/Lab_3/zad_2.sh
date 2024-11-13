@@ -2,48 +2,65 @@
 
 get_cpu_base()
 {
-    local data=($(awk 'NR==1' /proc/stat))
+    local count=2
+    local line=$(awk -v cnt="$count" 'NR==cnt' /proc/stat)
+    local line_split=($line)
 
-    local sum=0
-
-    # Loop starting from index 1
-    for ((i=1; i<${#data[@]}; i++)); do
-        sum=$((sum + data[i]))
+    while [[ $line_split[0] == cpu* ]]; do
+        core_base+=("$line")
+        count=$((count + 1))
+        line=$(awk -v cnt="$count" 'NR==cnt' /proc/stat)
+        line_split=($line)
     done
-
-    sum=$((sum - data[5]))
-    base_total=$sum
-
-    sum=$((sum - data[4]))
-    base=$sum
-
-    #echo "${array[1]}"
 }
 
 get_cpu_usage()
 {
-    local data=($(awk 'NR==1' /proc/stat))
+    local count=2
+    local line=$(awk -v cnt="$count" 'NR==cnt' /proc/stat)
+    local line_split=($line)
+    local core_data=()
 
-    local sum=0
-
-    # Loop starting from index 1
-    for ((i=1; i<${#data[@]}; i++)); do
-        sum=$((sum + data[i]))
+    while [[ $line_split[0] == cpu* ]]; do
+        core_data+=("$line")
+        count=$((count + 1))
+        line=$(awk -v cnt="$count" 'NR==cnt' /proc/stat)
+        line_split=($line)
     done
 
-    sum=$((sum - data[5]))
-    local total=$sum
-
-    sum=$((sum - data[4]))
-    local delta=$((sum - base))
+    local index=0
     
-    total=$((total - base_total))
+    for core in "${core_data[@]}"; do
+        local data=($core)
+        local base_data=(${core_base[index]})
 
-    local usage=$(echo "scale=8; $delta / $total * 100" | bc)
+        local base_sum=0
+        local sum=0
 
-    echo -e "CPU_usage:\t$usage"
+        # Loop starting from index 1
+        for ((i=1; i<${#data[@]}; i++)); do
+            base_sum=$((base_sum + base_data[i]))
+            sum=$((sum + data[i]))
+        done
+
+        base_sum=$((base_sum - base_data[5]))
+        sum=$((sum - data[5]))
+        local base_total=$base_sum
+        local total=$sum
+
+        base_sum=$((base_sum - base_data[4]))
+        sum=$((sum - data[4]))
+        local delta=$((sum - base_sum))
+        local total_delta=$((total - base_total))
+
+        local usage=$(echo "scale=8; $delta / $total_delta * 100" | bc)
+
+
+        index=$((index + 1))
+    done
+
+    core_base=("${core_data[@]}")
 }
-
 
 get_uptime()
 {
@@ -82,24 +99,24 @@ get_mem_info()
     echo "$(head -n 3 /proc/meminfo)"
 }
 
-timer=0
+
 base=0
 base_total=0
 
+core_base=()
+
 main()
 {
-    while (( timer < 100 )); do
-        get_cpu_base
+    get_cpu_base
+    while true; do
         sleep 1
-
         clear
+
         get_cpu_usage
         get_uptime
         #get_power_info
         get_loadavg_info
         get_mem_info
-
-        timer=$((timer + 1))
         
     done
 }
