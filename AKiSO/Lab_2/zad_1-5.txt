@@ -1,0 +1,61 @@
+Zad_1
+
+	/dev - Pliki urządzeń:
+
+	    Katalog /dev zawiera specjalne pliki urządzeń, które umożliwiają komunikację między systemem operacyjnym a sprzętem (np. dyskami, pamięciami USB, urządzeniami wejścia/wyjścia).
+	    Przykłady:
+		/dev/sda: Główny dysk.
+		/dev/tty: Terminale.
+		/dev/null: "Czarna dziura", która odrzuca wszelkie dane.
+
+	/proc - System plików procesów:
+
+	    Wirtualny system plików, który zawiera informacje o działających procesach i zasobach systemowych.
+	    Przykłady:
+		/proc/meminfo: Informacje o pamięci.
+		/proc/cpuinfo: Szczegóły o procesorze.
+		/proc/partitions: Informacje o partycjach dyskowych.
+
+	/sys - System plików urządzeń i jądra:
+
+	    Zawiera informacje o sprzęcie, sterownikach i interfejsach jądra.
+	    Przykłady:
+		/sys/class: Klasy urządzeń, np. sieciowych lub dźwiękowych.
+		/sys/block: Blokowe urządzenia magazynujące, np. dyski i pendrive'y.
+
+Zad_2
+	ps aux - lista procesów
+	tty - "numer terminala"
+	
+	ps axjf:
+	    a: pokazuje procesy wszystkich użytkowników.
+	    x: wyświetla procesy niezwiązane z terminalami.
+	    j: wyświetla hierarchię procesów.
+	    f: formatuje wynik w formie drzewa.
+	    
+	ps -t pts/0 - procesy przypisane do konkretnego terminala
+	
+	ps -p 5678 -o pid,ppid,stat,nice,%cpu,%mem,tty,time,cmd - szczegółowe informacje
+		
+Zad_4
+
+	sleep 1000 & - uruchom zadania w tle
+	sleep 1001 &
+	
+	jobs - lista zadań
+	
+	fg %1 - przwyróć zadanie na pierwszy plan
+	Ctrl+Z – wstrzymuje zadanie i oznacza je jako "Stopped".
+	bg %1 - wznowienie w tle zatrzymanego zadania
+	
+	kill %1
+	kill 12345		
+	kill -9 %1 - wymuczenie zakończenia za pomocą -9:
+	
+	ps - wszytskie uruchomione przez użytkownika porocesy
+
+Zad_5
+
+	mkfifo potok
+	cat < potok
+	echo "test" > potok

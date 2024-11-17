@@ -1,34 +1,35 @@
 #!/bin/bash
 
-# Nagłówki
+# pid - process ID
+# comm - command name
+# state - state (R: running, S: sleeping, D: uninterruptible sleep, Z: zombie, T: traced or stopped)
+# ppid - parent process ID
+# pgrp - process group ID
+# session - session ID
+# tty_nr - controlling terminal
+# rss - resident set size
+# lsof - number of open file descriptors - via /proc/PID/fd
+
 (echo -e "PPID\tPID\tCOMM\tSTATE\tTTY\tRSS\tPGID\tSID\tOPEN_FILES"
 
-# Przechodzimy przez wszystkie PID w /proc
 for pid in $(ls /proc | grep '^[0-9]'); do
-    # Sprawdzamy, czy /proc/$pid/stat i /proc/$pid/fd istnieją
     if [[ -f /proc/$pid/stat && -d /proc/$pid/fd ]]; then
 
-        # Wczytujemy dane z /proc/PID/stat
-        ppid=$(awk '{print $4}' /proc/$pid/stat)
-        comm=$(awk '{print $2}' /proc/$pid/stat)
-        #usuwamy nawiasy z comm. Zamień nawiasy na pusty ciąg
+        ppid=$(awk '/^PPid:/ {print $2}' /proc/$pid/status)
+        comm=$(awk '/^Name:/ {print $2}' /proc/$pid/status)
         comm="${comm//[()]/}"
-        state=$(awk '{print $3}' /proc/$pid/stat)
+        state=$(awk '/^State:/ {print $2}' /proc/$pid/status)
         tty=$(awk '{print $7}' /proc/$pid/stat)
-        rss=$(awk '{print $24}' /proc/$pid/stat)
+        rss=$(awk '/^VmRSS:/ {print $2}' /proc/$pid/status)
         pgid=$(awk '{print $5}' /proc/$pid/stat)
         sid=$(awk '{print $6}' /proc/$pid/stat)
 
-
-        # Liczymy ilość otwartych plików w katalogu /proc/$pid/fd. wc -l liczy liczbę linii
         open_files=$(ls /proc/$pid/fd | wc -l)
 
-        # Ustawia wartości domyślne jeśli rss albo tty mają wartość null
         rss=${rss:-0}
         tty=${tty:-'?'}
         ppid=${ppid:-'?'}
 
-        # Wypisujemy dane w odpowiednim formacie
         echo -e "$ppid\t$pid\t$comm\t$state\t$tty\t$rss\t$pgid\t$sid\t$open_files"
     fi
 done) | sort -k2 -n | column -t -s $'\t'
