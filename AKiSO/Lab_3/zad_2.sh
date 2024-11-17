@@ -64,9 +64,7 @@ get_network_usage()
 
     for ((j=0; j<15; j++)); do
         x=${past_usage[j]}
-
-        x=$(echo "scale=1; ($x / $max_usage) * 10" | bc)
-        x=$(echo "$x / 1" | bc)
+        x=$(((x * 10) / max_usage))
         y+=($x)
     done
 
