@@ -1,0 +1,2 @@
+Added ThirdPartyDoorAdapter to pass ThirdPartyDoorAdapterTest
+Added ThirdPartyDoorObjectAdapter to pass ThirdPartyDoorObjectAdapterTest
