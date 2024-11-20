@@ -15,6 +15,7 @@
  */
 package eu.jpereira.trainings.designpatterns.structural.composite.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,7 +40,14 @@ public abstract class CompositeShape extends Shape {
 	 *         was not present
 	 */
 	public boolean removeShape(Shape shape) {
-		// TODO: implement
+		for(Shape s : shapes)
+		{
+			if(s.equals(shape))
+			{
+				shapes.remove(s);
+				return true;
+			}
+		}
 		return false;
 
 	}
@@ -51,7 +59,11 @@ public abstract class CompositeShape extends Shape {
 	 */
 	public int getShapeCount() {
 		// TODO: implement
-		return 0;
+		if(this.asComposite() != null)
+		{
+			return shapes.size();
+		}
+		return -1;
 
 	}
 
@@ -63,23 +75,35 @@ public abstract class CompositeShape extends Shape {
 	 * @throws ShapeDoesNotSupportChildren
 	 *             if this shape is not a composite
 	 */
-	public void addShape(Shape shape) {
+	public void addShape(Shape shape){
 		// TODO: Implement
+		if(this.asComposite() != null)
+		{
+			shapes.add(shape);
+		}
 	}
 
 	public List<Shape> getShapes() {
 		// TODO: Implement
-		return null;
+		return shapes;
 
 	}
 
 	/**
-	 * @param circle
-	 * @return
+	 * @param shapeType ShapeType
+	 * @return list<shape>
 	 */
-	public List<Shape> getShapesByType(ShapeType circle) {
-		return null;
+	public List<Shape> getShapesByType(ShapeType shapeType) {
 		// TODO: Implement
+		List<Shape> typeShapes = new ArrayList<>();
+		for(Shape s : shapes)
+		{
+			if(s.getType() == shapeType)
+			{
+				typeShapes.add(s);
+			}
+		}
+		return typeShapes;
 	}
 
 	/**
@@ -89,7 +113,15 @@ public abstract class CompositeShape extends Shape {
 	 */
 	public List<Shape> getLeafShapes() {
 		// TODO: Implement
-		return null;
+		List<Shape> leafShapes = new ArrayList<>();
+		for(Shape s : shapes)
+		{
+			if(s instanceof LeafShape)
+			{
+				leafShapes.add(s);
+			}
+		}
+		return leafShapes;
 	}
 
 	/**
@@ -98,7 +130,7 @@ public abstract class CompositeShape extends Shape {
 	 * @return
 	 */
 	protected List<Shape> createShapesList() {
-		return null;
+		return new ArrayList<>();
 		// TODO: Implement
 	}
 }

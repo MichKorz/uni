@@ -10,9 +10,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
   <component name="ProjectId" id="2p7gufU6fB4lJqjnF7JJOz1KmZ6" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -23,7 +23,7 @@
     "JUnit.ReportBuilderTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Admin/Desktop/Lab_3/designpatterns/trunk/factorymethod",
+    "last_opened_file_path": "C:/Users/Admin/Desktop/Lab_3/designpatterns/trunk/singleton",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -53,7 +53,6 @@
       <option name="presentableId" value="Default" />
       <updated>1732122751183</updated>
       <workItem from="1732122752262" duration="1913000" />
-      <workItem from="1732124769583" duration="315000" />
     </task>
     <servers />
   </component>

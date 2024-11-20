@@ -34,7 +34,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Admin/Desktop/Lab_3/designpatterns/trunk/builder",
+    "last_opened_file_path": "C:/Users/Admin/Desktop/Lab_3/designpatterns/trunk/adapter",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -65,7 +65,6 @@
       <updated>1732107809183</updated>
       <workItem from="1732107810292" duration="4071000" />
       <workItem from="1732112471033" duration="451000" />
-      <workItem from="1732114212125" duration="20000" />
     </task>
     <servers />
   </component>
