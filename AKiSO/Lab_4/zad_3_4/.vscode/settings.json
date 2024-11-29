@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "signal.h": "c",
+        "unistd.h": "c",
+        "wait.h": "c",
+        "input_handling.h": "c"
+    }
+}
