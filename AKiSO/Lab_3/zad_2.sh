@@ -36,13 +36,24 @@ get_network_usage()
 
     usage_base=$usage_sum
 
+    # display network usage in B/KB/MB
+    echo -n "Network usage: "
+
+    if [ "$usage" -lt 1024 ]; then
+        echo "${usage} b"
+    elif [ "$usage" -lt $((1024 * 1024)) ]; then
+        echo "$(awk "BEGIN {print $usage/1024}") KB"
+    else
+        echo "$(awk "BEGIN {print $usage/(1024*1024)}") MB"
+    fi
+
 
     if [[ $max_usage -lt $usage ]]; then
         max_usage=$usage
     fi
 
     find_new_max=0;
-    if [[ $max_usage -lt ${past_usage[14]} ]]; then
+    if [[ $max_usage -eq ${past_usage[14]} ]]; then
         find_new_max=1
     fi
 
@@ -59,6 +70,8 @@ get_network_usage()
             fi
         done
     fi
+
+
 
     y=()
 
