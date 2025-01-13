@@ -156,3 +156,26 @@ atoi:
     pop     ecx             ; restore ecx from the value we pushed onto the stack at the start
     pop     ebx             ; restore ebx from the value we pushed onto the stack at the start
     ret
+
+hexToString:
+    cmp eax, 10
+    jge htt
+    call iprint
+    ret
+
+;2551347
+;26EE33
+
+htt:
+    add eax, 55
+    ;call iprint
+    mov edx, 1
+    push ecx
+    push eax
+    mov ecx, esp
+    mov ebx, 1
+    mov eax, 4
+    int 80h
+    pop eax
+    pop ecx
+    ret ; UwU (>_<)
